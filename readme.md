@@ -2,6 +2,8 @@
 
 Aplicação web full-stack desenvolvida para cadastro, autenticação e controle de acesso de usuários (comum e administrador), utilizando **HTML5**, **CSS3**, **JavaScript Vanilla** e **Supabase (PostgreSQL)**.
 
+🔗 **Acesse o projeto online:** [sistema-usuarios-81fmkij47-marcus-dev3.vercel.app](https://sistema-usuarios-81fmkij47-marcus-dev3.vercel.app/)
+
 ---
 
 ## Sobre o Projeto e Aprendizado
@@ -33,6 +35,7 @@ Por ser minha primeira experiência conectando um front-end a um serviço de ban
 
 - **Front-end:** HTML5, CSS3, JavaScript (ES6+)
 - **Back-end / BaaS:** [Supabase](https://supabase.com/) (Authentication & PostgreSQL Database)
+- **Hospedagem:** [Vercel](https://vercel.com/)
 
 ---
 
