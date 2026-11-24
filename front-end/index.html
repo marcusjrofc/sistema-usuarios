@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Usuários</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- TELA 1: CADASTRO E LOGIN (ALTERNÁVEIS) -->
+    <section id="tela-auth" class="container auth-single">
+        <!-- CARD DE CADASTRO (VISÍVEL POR PADRÃO) -->
+        <div id="card-cadastro" class="card">
+            <h1>Cadastre-se</h1>
+            <form id="form-cadastro">
+                <label for="cad-nome">Nome</label>
+                <input type="text" id="cad-nome" placeholder="Insira seu nome" required>
+
+                <label for="cad-email">Email</label>
+                <input type="email" id="cad-email" placeholder="seu@email.com" required>
+
+                <label for="cad-nascimento">Data de nascimento</label>
+                <input type="date" id="cad-nascimento" required>
+
+                <label for="cad-genero">Gênero</label>
+                <select id="cad-genero" required>
+                    <option value="" disabled selected>Qual seu gênero?</option>
+                    <option value="Homem">Homem</option>
+                    <option value="Mulher">Mulher</option>
+                </select>
+
+                <label for="cad-senha">Senha</label>
+                <div class="campo-senha">
+                    <input type="password" id="cad-senha" placeholder="Crie uma senha forte" minlength="8" required>
+                    <button type="button" class="btn-olho" data-alvo="cad-senha" aria-label="Mostrar ou ocultar senha">👁️</button>
+                </div>
+
+                <ul class="requisitos-senha">
+                    <li id="req-tamanho">Mínimo de 8 caracteres</li>
+                    <li id="req-maiuscula">Letra maiúscula e minúscula</li>
+                    <li id="req-numero">Pelo menos um número</li>
+                    <li id="req-simbolo">Pelo menos um símbolo (!@#$%...)</li>
+                    <li id="req-proibidas">Não conter "senha" ou "123456"</li>
+                </ul>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+
+            <p class="troca-auth">
+                Já tem cadastro? <a href="#" id="ir-para-login">Entrar</a>
+            </p>
+        </div>
+
+        <!-- CARD DE LOGIN (ESCONDIDO POR PADRÃO) -->
+        <div id="card-login" class="card" style="display: none;">
+            <h2>Login</h2>
+            <form id="form-login">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" placeholder="seu@email.com" required>
+
+                <label for="login-senha">Senha</label>
+                <div class="campo-senha">
+                    <input type="password" id="login-senha" placeholder="Sua senha" required>
+                    <button type="button" class="btn-olho" data-alvo="login-senha" aria-label="Mostrar ou ocultar senha">👁️</button>
+                </div>
+
+                <button type="submit">Entrar</button>
+            </form>
+
+            <p class="troca-auth">
+                Ainda não tem conta? <a href="#" id="ir-para-cadastro">Cadastre-se</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- TELA 2: ÁREA DO USUÁRIO COMUM -->
+    <section id="tela-usuario" class="container" style="display: none;">
+        <div class="card">
+            <div class="topo-painel">
+                <h2>Meu Perfil</h2>
+                <button id="btn-sair-user" class="btn-sair">Sair</button>
+            </div>
+            <div class="dados-usuario">
+                <p><strong>Nome:</strong> <span id="user-nome">-</span></p>
+                <p><strong>Idade:</strong> <span id="user-idade">-</span> anos</p>
+                <p><strong>Gênero:</strong> <span id="user-genero">-</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA 3: PAINEL DO ADMINISTRADOR -->
+    <section id="tela-admin" class="container" style="display: none;">
+        <div class="card">
+            <div class="topo-painel">
+                <h2>Painel Admin — Usuários Cadastrados</h2>
+                <button id="btn-sair-admin" class="btn-sair">Sair</button>
+            </div>
+
+            <div class="barra-filtro">
+                <label for="filtro-genero">Filtrar por gênero:</label>
+                <select id="filtro-genero">
+                    <option value="Todos">Todos</option>
+                    <option value="Homem">Homem</option>
+                    <option value="Mulher">Mulher</option>
+                </select>
+            </div>
+
+            <div class="tabela-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Gênero</th>
+                            <th>Idade</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-usuarios">
+                        <!-- Preenchido via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biblioteca do Supabase + seu script -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
